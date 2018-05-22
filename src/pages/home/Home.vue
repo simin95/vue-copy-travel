@@ -4,6 +4,7 @@
       <home-swiper></home-swiper>
       <home-icons></home-icons>
       <home-recommend></home-recommend>
+      <home-weekend></home-weekend>
   </div>
 </template>
 
@@ -26,7 +27,8 @@ export default {
     // 8个图标
     HomeIcons,
     // 推荐页面
-    HomeRecommend
+    HomeRecommend,
+    HomeWeekend
   },
   data() {
     return {
