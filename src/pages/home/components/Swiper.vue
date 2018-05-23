@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
+    <swiper :options="swiperOption" v-if="showSwiper" ref="mySwiper" @someSwiperEvent="callback">
     <!-- slides -->
     <swiper-slide v-for="item in swiperList" :key="item.id">
-      <img class="swiper-img" :src="item.img">
+      <img class="swiper-img" :src="item.imgUrl">
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination"  slot="pagination"></div>
@@ -14,21 +14,24 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props: {
+    swiperList: Array
+  },
   data() {
     return {
       // 这是配置项，具体设置见文档
       swiperOption: {
+        // autoplay: true,
         pagination: ".swiper-pagination",
         loop: true
-      },
-      swiperList: [{
-        id: "0001",
-        img: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png"
-      }, {
-        id: "0002",
-        img: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png"
-      }]
+      }
+      // swiperList: []
     };
+  },
+  computed: {
+    showSwiper () {
+      return this.swiperList.length;
+    }
   }
 };
 </script>

@@ -2,7 +2,7 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in weekendList" :key="item.id">
         <div class="item-img-wrapper">
           <img class="item-img" :src="item.imgUrl">
         </div>
@@ -19,39 +19,11 @@
 <script>
 export default {
   name: "HomeWeekend",
+  props: {
+    weekendList: Array
+  },
   data() {
     return {
-      recommendList: [{
-        id: "0001",
-        imgUrl: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png",
-        title: "泡温泉111",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0002",
-        imgUrl: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png",
-        title: "泡温泉222",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0003",
-        imgUrl: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png",
-        title: "泡温泉333",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0004",
-        imgUrl: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png",
-        title: "泡温泉111",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0005",
-        imgUrl: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png",
-        title: "泡温泉222",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0006",
-        imgUrl: "https://source.qunarzz.com/site/images/wap/home/recommend/default_banner.png",
-        title: "泡温泉333",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }]
     };
   }
 };

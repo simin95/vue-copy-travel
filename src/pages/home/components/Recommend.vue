@@ -19,39 +19,11 @@
 <script>
 export default {
   name: "HomeRecommend",
+  props: {
+    recommendList: Array
+  },
   data() {
     return {
-      recommendList: [{
-        id: "0001",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-        title: "泡温泉111",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0002",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-        title: "泡温泉222",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0003",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-        title: "泡温泉333",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0004",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-        title: "泡温泉111",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0005",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-        title: "泡温泉222",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }, {
-        id: "0006",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-        title: "泡温泉333",
-        desc: "假期的最好享受方式，全身心放松自己"
-      }]
     };
   }
 };

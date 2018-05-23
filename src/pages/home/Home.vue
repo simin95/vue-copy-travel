@@ -1,10 +1,10 @@
 <template>
   <div>
-      <home-header></home-header>
-      <home-swiper></home-swiper>
-      <home-icons></home-icons>
-      <home-recommend></home-recommend>
-      <home-weekend></home-weekend>
+      <home-header :city="city"></home-header>
+      <home-swiper :swiperList="swiperList"></home-swiper>
+      <home-icons :iconList="iconList"></home-icons>
+      <home-recommend :recommendList="recommendList"></home-recommend>
+      <home-weekend :weekendList="weekendList"></home-weekend>
   </div>
 </template>
 
@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      city: "",
       lastcity: "上海",
       swiperList: [],
       iconList: [],
@@ -45,22 +46,30 @@ export default {
   methods: {
     getHomeInfo() {
       axios
-        .get("/api/index.json?city=" + this.city)
+        // .get("/static/mock/city.json")
+        .get("/api/index.json")
         .then(this.getHomeInfoSucc)
         .catch(console.log("数据获取失败"));
     },
     getHomeInfoSucc(res) {
       console.log(res);
       res = res.data;
-      if (res.dat && res.data) {
-        // const data = res.data;
-        console.log(res);
+      console.log(233);
+      console.log(res.ret);
+      // console.log(res.data);
+      if (res.ret && res.data) {
+        const data = res.data;
+        this.city = data.city;
+        this.swiperList = data.swiperList;
+        this.iconList = data.iconList;
+        this.recommendList = data.recommendList;
+        this.weekendList = data.weekendList;
       }
     }
   },
   mounted() {
     // this.lastcity = this.city;
-    // this.getHomeInfo();
+    this.getHomeInfo();
   },
   activated() {
     if (this.lastcity !== this.city) {
