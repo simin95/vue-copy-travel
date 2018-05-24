@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :cities="cities" :hotCities="hotCities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
+    <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
   </div>
 </template>
 
@@ -27,7 +27,9 @@ export default {
     return {
       cities: {},
       hotCities: [],
-      alphabet: []
+      alphabet: [],
+      // 用于Alphabet组件和List组件传值
+      letter: ""
     };
   },
   mounted() {
@@ -49,6 +51,10 @@ export default {
         this.cities = data.cities;
         this.hotCities = data.hotCities;
       }
+    },
+    handleLetterChange(letter) {
+      console.log(letter);
+      this.letter = letter;
     }
   }
 };

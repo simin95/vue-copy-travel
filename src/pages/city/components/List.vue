@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item,index) in cities" :key="index">
+      <div class="area" v-for="(item,index) in cities" :key="index" :ref="index">
         <div class="title border-topbottom">{{index}}</div>
         <div class="item-list">
           <div class="item border-bottom" v-for="city in item" :key="city.id">{{city.name}}</div>
@@ -34,10 +34,21 @@ export default {
   name: "CityList",
   props: {
     cities: Object,
-    hotCities: Array
+    hotCities: Array,
+    letter: String
   },
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper);
+  },
+  watch: {
+    letter() {
+      // console.log(this.$refs["A"][0]);
+      if (this.letter) {
+        const element = this.$refs[this.letter][0];
+        // better-scroll的这个方法哼好用
+        this.scroll.scrollToElement(element);
+      }
+    }
   }
 };
 </script>
