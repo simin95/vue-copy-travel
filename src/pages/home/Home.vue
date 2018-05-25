@@ -1,6 +1,6 @@
 <template>
   <div>
-      <home-header :city="city"></home-header>
+      <home-header></home-header>
       <home-swiper :swiperList="swiperList"></home-swiper>
       <home-icons :iconList="iconList"></home-icons>
       <home-recommend :recommendList="recommendList"></home-recommend>
@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      city: "",
+      // city: "",
       lastcity: "上海",
       swiperList: [],
       iconList: [],
@@ -41,7 +41,7 @@ export default {
     };
   },
   // computed() {
-  // ...mapState(["city"]);
+  //     ...mapState(["city"]);
   // },
   methods: {
     getHomeInfo() {
@@ -59,7 +59,7 @@ export default {
       // console.log(res.data);
       if (res.ret && res.data) {
         const data = res.data;
-        this.city = data.city;
+        // this.city = data.city;
         this.swiperList = data.swiperList;
         this.iconList = data.iconList;
         this.recommendList = data.recommendList;
@@ -68,7 +68,7 @@ export default {
     }
   },
   mounted() {
-    // this.lastcity = this.city;
+    this.lastcity = this.city;
     this.getHomeInfo();
   },
   activated() {

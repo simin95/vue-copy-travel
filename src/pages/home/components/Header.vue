@@ -17,10 +17,14 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+
 export default {
   name: "HomeHeader",
-  props: {
-    city: String
+  computed: {
+    // 将vuex中的city属性映射到本组件的计算属性中
+    ...mapState(["city"]),
+    ...mapGetters(["doubleCity"])
   }
 };
 </script>
@@ -53,7 +57,8 @@ export default {
     line-height: .64rem
     color: #ccc
   .header-right
-    width: 1.2rem
+    // width: 1.04rem
+    padding-right .1rem
     float: right
     height: .86rem
     line-height: .86rem

@@ -5,14 +5,14 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.city}}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="city in hotCities" :key="city.id">
+          <div class="button-wrapper" v-for="city in hotCities" :key="city.id" @click="handleCityClick(city.name)">
             <div class="button">{{city.name}}</div>
           </div>
         </div>
@@ -20,7 +20,7 @@
       <div class="area" v-for="(item,index) in cities" :key="index" :ref="index">
         <div class="title border-topbottom">{{index}}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="city in item" :key="city.id">{{city.name}}</div>
+          <div class="item border-bottom" v-for="city in item" :key="city.id" @click="handleCityClick(city.name)">{{city.name}}</div>
         </div>
       </div>
     </div>
@@ -29,6 +29,7 @@
 
 <script>
 import Bscroll from "better-scroll";
+import { mapState } from "vuex";
 
 export default {
   name: "CityList",
@@ -40,6 +41,9 @@ export default {
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper);
   },
+  computed: {
+    ...mapState(["city"])
+  },
   watch: {
     letter() {
       // console.log(this.$refs["A"][0]);
@@ -48,6 +52,13 @@ export default {
         // better-scroll的这个方法哼好用
         this.scroll.scrollToElement(element);
       }
+    }
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.dispatch("changeCity", city);
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
     }
   }
 };

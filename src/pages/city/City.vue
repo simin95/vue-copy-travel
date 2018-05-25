@@ -43,17 +43,17 @@ export default {
         .catch(console.log("数据获取失败哦"));
     },
     handleGetCityInfoSucc(res) {
-      console.log(res);
+      // console.log(res);
       res = res.data;
       if (res.ret && res.data) {
         const data = res.data;
-        console.log(data);
+        // console.log(data);
         this.cities = data.cities;
         this.hotCities = data.hotCities;
       }
     },
     handleLetterChange(letter) {
-      console.log(letter);
+      // console.log(letter);
       this.letter = letter;
     }
   }

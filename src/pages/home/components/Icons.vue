@@ -44,7 +44,7 @@ export default {
     // 当前下标对应的数据应该展示在轮播图的第几页
     pages() {
       const pages = [];
-      console.log(this.iconList);
+      // console.log(this.iconList);
       this.iconList.forEach((item, index) => {
         const page = Math.floor(index / 8);
         if (!pages[page]) {

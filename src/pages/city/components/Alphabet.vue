@@ -36,7 +36,7 @@ export default {
       for (let i in this.cities) {
         letters.push(i);
       }
-      console.log(letters);
+      // console.log(letters);
       return letters;
     }
   },
