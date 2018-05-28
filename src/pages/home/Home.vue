@@ -15,7 +15,7 @@ import HomeIcons from "./components/Icons";
 import HomeRecommend from "./components/Recommend";
 import HomeWeekend from "./components/Weekend";
 import axios from "axios";
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -33,21 +33,21 @@ export default {
   data() {
     return {
       // city: "",
-      lastcity: "上海",
+      lastcity: "",
       swiperList: [],
       iconList: [],
       recommendList: [],
       weekendList: []
     };
   },
-  // computed() {
-  //     ...mapState(["city"]);
-  // },
+  computed: {
+    ...mapState(["city"])
+  },
   methods: {
     getHomeInfo() {
       axios
         // .get("/static/mock/city.json")
-        .get("/api/index.json")
+        .get("/api/index.json?city=" + this.city)
         .then(this.getHomeInfoSucc)
         .catch(console.log("数据获取失败"));
     },
@@ -71,9 +71,14 @@ export default {
     this.lastcity = this.city;
     this.getHomeInfo();
   },
+  // 使用keep-alive标签后可使用此生命周期钩子
+  // 若城市没有变化，则不去重复发ajax请求
   activated() {
+    console.log("activated");
+    console.log(this.lastcity);
+    console.log(this.city);
     if (this.lastcity !== this.city) {
-      this.lastCity = this.city;
+      this.lastcity = this.city;
       this.getHomeInfo();
     }
   }

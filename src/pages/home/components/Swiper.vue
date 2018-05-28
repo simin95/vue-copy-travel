@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption" v-if="showSwiper" ref="mySwiper" @someSwiperEvent="callback">
+    <swiper :options="swiperOption" v-if="showSwiper" ref="mySwiper">
     <!-- slides -->
     <swiper-slide v-for="item in swiperList" :key="item.id">
       <img class="swiper-img" :src="item.imgUrl">
